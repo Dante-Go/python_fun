@@ -1,19 +1,37 @@
 from email.mime.text import MIMEText
 import smtplib
-from email.mime.multipart import MIMEBase, MIMEMultipart
+from email.header import Header
+from email.mime.multipart import MIMEMultipart
 
-mail_mul = MIMEMultipart()
+msg = MIMEMultipart('alternative')
 
-mail_text = MIMEText('email with attachment', 'plain', 'utf-8')
+html_content = """
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <title>Title</title>
+            </head>
+            <body>
+            <h1> 这是一封HTML格式邮件</h1>
+            </body>
+            </html>
+"""
 
-mail_mul.attach(mail_text)
+msg_html = MIMEText(html_content, 'html', 'utf-8')
+msg.attach(msg_html)
 
-with open('hano.py', 'rb') as f:
-	s = f.read()
-	m = MIMEText(s, 'base64', 'utf-8')
-	m['Content-Type'] = 'application/octet-stream'
-	m['Content-Disposition'] = 'attachment; filename="hano.py"'
-	mail_mul.attach(m)
+msg_text = MIMEText('email with header', 'plain', 'utf-8')
+msg.attach(msg_text)
+
+header_from = Header('hander_from<xxxxx@qq.com>', 'utf-8')
+msg['From'] = header_from
+
+header_to = Header('header_to<xxxxxx@qq.com>', 'utf-8')
+msg['To'] = header_to
+
+header_sub = Header('header subject', 'utf-8')
+msg['Subject'] = header_sub
 
 from_addr = "2528448730@qq.com"
 from_token = "hgcmklipwrxvjfea"
@@ -23,9 +41,15 @@ to_addr = "2528448730@qq.com"
 smtp_srv = "smtp.qq.com"
 
 try:
-	srv = smtplib.SMTP_SSL(smtp_srv.encode(), 465) # smtp port: 25
+	#srv = smtplib.SMTP_SSL(smtp_srv.encode(), 465) # smtp port: 25
+
+	srv = smtplib.SMTP(smtp_srv.encode(), 25)
+	srv.starttls()
+
+	srv.set_debuglevel(1)
+
 	srv.login(from_addr, from_token)
-	srv.sendmail(from_addr, [to_addr], mail_mul.as_string())
+	srv.sendmail(from_addr, [to_addr], msg.as_string())
 	srv.quit()
 except Exception as e:
 	print(e)
