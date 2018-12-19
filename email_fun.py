@@ -1,10 +1,23 @@
-import smtplib
 from email.mime.text import MIMEText
+import smtplib
 
-msg = MIMEText("Hello, email demo", "plain", "utf-8")
+mail_content = """
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <title>Title</title>
+        </head>
+        <body>
+        <h1> 这是一封HTML格式邮件</h1>
+        </body>
+        </html>
+        """
+
+msg = MIMEText(mail_content, "html", "utf-8")
 
 from_addr = "2528448730@qq.com"
-from_token = "xxxxxxxxxxxxxxx"
+from_token = "hgcmklipwrxvjfea"
 
 to_addr = "2528448730@qq.com"
 
