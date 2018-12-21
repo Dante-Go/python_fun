@@ -14,6 +14,8 @@ headers = {
     'Conent-Length': len(data)
 }
 
+req = request.Request(url=base_url, data=data, headers=headers)
+
 rsp = request.urlopen(base_url, data=data)
 
 json_data = rsp.read().decode('utf-8')
