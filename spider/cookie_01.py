@@ -1,7 +1,9 @@
 from urllib import request, parse
 from http import cookiejar
 
-cookie = cookiejar.CookieJar()
+#cookie = cookiejar.CookieJar()
+filename = 'cookie.txt'
+cookie = cookiejar.MozillaCookieJar(filename)
 
 cookie_handler = request.HTTPCookieProcessor(cookie)
 
@@ -23,6 +25,8 @@ def login():
 
     rsp = opener.open(req)
 
+    cookie.save(ignore_discard=True, ignore_expires=True)
+
 def getHomePage():
     url = 'http://www.renren.com/965187997/profile'
 
@@ -33,4 +37,3 @@ def getHomePage():
 
 if __name__ == '__main__':
     login()
-    getHomePage()
