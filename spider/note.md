@@ -88,3 +88,25 @@
     - 设置代理地址
     - 创建ProxyHandler
     - 创建Opener
+## Cookie和Session
+- cookie是发送给用户的一段信息，session是保存在服务器上的对应的另一半用户信息，用来鉴别用户身份；类似于古代的虎符
+- cookie与session的区别：
+    - 存放位置不同
+    - cookie不安全
+    - session保存在服务器上一段时间，会过期
+    - 单个cookie保存数据不超过4K，很多浏览器限制一个站点最多保存20个（非HTTP协议标准）
+- session的存放位置
+    - 存在server端
+    - 存在内存或数据库中
+- cookie相关
+    - http模块包含一些关于cookie的模块，可以方便的操作cookie
+        - CookieJar
+            - 管理存储cookie，向传出的http请求添加cookie；
+            - cookie存储在内存中，CookieJar实例回收后cookie将消失
+        - FileCookieJar(filename, delayload=None, policy=None):
+            - 使用文件管理cookie
+        - MozillaCookieJar(filename, delayload=None, policy=None):
+            - 创建于mocilla浏览器cookie.TXT兼容的FileCookieJar实例
+        - LwpCookieJar（filename, delayload=None, policy=None):
+            - 创建于libwww-perl标准兼容的Set-Cookie3格式的FileCookieJar实例
+        - 关系：CookieJar --> FileCookieJar --> MozillaCookieJar & LwpCookieJar
