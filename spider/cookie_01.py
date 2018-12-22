@@ -2,8 +2,10 @@ from urllib import request, parse
 from http import cookiejar
 
 #cookie = cookiejar.CookieJar()
-filename = 'cookie.txt'
-cookie = cookiejar.MozillaCookieJar(filename)
+#filename = 'cookie.txt'
+#cookie = cookiejar.MozillaCookieJar(filename)
+cookie = cookiejar.MozillaCookieJar()
+cookie.load('cookie.txt', ignore_expires=True, ignore_discard=True)
 
 cookie_handler = request.HTTPCookieProcessor(cookie)
 
@@ -36,4 +38,5 @@ def getHomePage():
         f.write(html)
 
 if __name__ == '__main__':
-    login()
+    #login()
+    getHomePage()
