@@ -118,6 +118,7 @@
 ## JS加密
 - 有的反爬虫机制采用js对需要传输的数据进行加密处理（通常是MD5）
 - JS必须在客户端执行，而且是明文代码，所以加密意义不大
+- 在线格式化JS：http://tool.oschina.net/codeformat/json
 ## AJAX
 - 异步请求
 - 一般使用json格式
