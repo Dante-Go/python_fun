@@ -122,3 +122,50 @@
 ## AJAX
 - 异步请求
 - 一般使用json格式
+
+# Requests
+- 更简洁
+- 继承了urllib的所有特征
+- 底层使用urllib3
+- 开源：https://github.com/requests/requests
+- 配套中文文档： http://docs.python-requests.org/zh_CN/latest/index.html
+- 安装：conda install request
+## GET
+- requests.get(url)
+- requests.request('get', url)
+## POST
+- rsp = requests.post(url, data=data)
+- data,headers要求dict类型
+## proxy
+- 代理有可能报错，如果使用人数多，考虑安全问题，可能会被强行关闭
+- 示例：
+    - proxies = { 'http': 'address of proxy', 'https': 'address of proxy'}
+    - rsp = requests.request('get', url, proxies = proxies)
+## 用户验证
+- 代理验证
+    - 可能需要使用HTTP basic Auth
+    - proxy = { 'http': 'username:password@192.168.1.1:8888' }
+    - rsp = requests.get(url, proxies=proxy)
+- web客户端验证
+    - 添加auth=(username, password)
+    - auth = ('test1', '123456')
+    - rsp = requests.get(url, auth=auth)
+## Cookie
+- requests可以自动处理cookie信息
+- 示例：
+    - rsp = requests.get(url)
+    - cookiejar = rsp.cookies
+    - cookiedict = requests.utils.dict_from_cookiejar(cookiejar)
+## session
+- 和服务器端的session不同
+- 模拟一次对话，从客户端连接服务器开始，到客户端浏览器断开
+- 能让我们跨请求时保持某些参数，比如，在同一个session实例发出的所有请求之间保持cookie
+- 示例：
+    - ss = requests.session()
+    - headers = { 'User-Agent': 'xxx'}
+    - data = { 'name': 'xxx' }
+    - ss.post( url, data=data, headers=headers)
+    - rsp = ss.get( url )
+## https请求验证SSL证书
+- 参数verify表示是否需要验证SSL证书，默认为True
+- rsp = request.get( url, verify=False )
