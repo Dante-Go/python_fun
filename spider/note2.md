@@ -72,3 +72,11 @@
     - 解析HTML
     - 文件读取
     - etree和XPath配合使用
+# CSS 选择器 BeautifulSoup4
+- http://beautifulsoup.readthedocs.io/zh_CN/v4.4.0/
+## 常用提取信息工具的比较：
+    - 正则：很快、不好用、不需要安装
+    - beautifulsoup: 慢、使用简单、安装简单
+    - lxml: 比较快、使用简单、安装一般
+## 四大对象
+    -  
