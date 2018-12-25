@@ -20,3 +20,7 @@ for i in s:
 	print(i.group())
 
 print('-----------------------------------------------------')
+unicode_str = u'正则·世界'
+pattern = re.compile(r'[\u4e00-\u9fa5]')
+m = pattern.findall(unicode_str)
+print(m)
