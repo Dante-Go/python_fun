@@ -21,3 +21,17 @@ print(s)
 xml = etree.parse('./lxml_sam.xml')
 rst = etree.tostring(xml, pretty_print=True)
 print(rst)
+
+rst = xml.xpath('//book')
+print(type(rst))
+print(rst)
+
+rst = xml.xpath('//book[@category="sport"]')
+print(type(rst))
+print(rst)
+
+rst = xml.xpath('//book[@category="sport"]/year')
+rst = rst[0]
+print(type(rst))
+print(rst.tag)
+print(rst.text)
