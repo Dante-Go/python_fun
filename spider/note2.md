@@ -32,3 +32,43 @@
     - re = ab*
     - 贪婪匹配：abbbbb
     - 非贪婪匹配：a
+# XML
+- Extensable Markup Language
+- http://www.w3school.com.cn/xml/index.asp
+- 概念：父节点、子节点、先辈节点、兄弟节点、后代节点
+# XPATH
+- XML Path Language, 是一门在XML文档中查找信息的语言；
+- http://www.w3school.com.cn/xpath/index.asp
+## XPath开发工具：
+- XMLQuire：开源的XPath表达式工具
+- Xpath Helper：chrome插件
+- XPath Checker：FireFox插件
+## 常用表达式：
+- nodename: 选择nodename的所有子节点
+- /: 从根节点开始查找
+- //: 选取元素，不考虑元素具体位置
+- .: 当前节点
+- ..: 父节点
+- @: 选取属性
+## 谓语(predicates):
+- 用于定位某个具体的节点，放置于[]中
+- /nodename/childnodename[1] : 选择nodename下第一个childnodename节点
+- /nodename/childnodename[last()] : 选择nodename下最后一个childnodename节点
+- /nodename/childnodename[last()-1] : 选择倒数第二个节点
+- /nodename/childnodename[position()<3] : 选择前两个节点
+- /nodename/childnodename[@lang] : 选择有lang属性的元素
+- /nodename/childnodename[@lang="cn"] : 选择含有lang属性，且其值为cn的元素
+- /nodename/childnodename[@price < 90]/title : 选择含有price属性，其值小于90的节点的title子节点
+## 通配符：
+- * : 匹配任何节点
+- @* : 匹配任何属性
+- node() : 匹配任何类型节点 
+## 多个路径
+- //nodename/node | //nodenameB/node2 : 选择nodename下node和nodenameB下node2
+# lxml库
+- HTML/XML解析器
+- http://lxml.de/index.html
+- 功能：
+    - 解析HTML
+    - 文件读取
+    - etree和XPath配合使用
