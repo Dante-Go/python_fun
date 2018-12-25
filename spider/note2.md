@@ -32,6 +32,7 @@
     - re = ab*
     - 贪婪匹配：abbbbb
     - 非贪婪匹配：a
+
 # XML
 - Extensable Markup Language
 - http://www.w3school.com.cn/xml/index.asp
@@ -65,6 +66,7 @@
 - node() : 匹配任何类型节点 
 ## 多个路径
 - //nodename/node | //nodenameB/node2 : 选择nodename下node和nodenameB下node2
+
 # lxml库
 - HTML/XML解析器
 - http://lxml.de/index.html
@@ -72,6 +74,7 @@
     - 解析HTML
     - 文件读取
     - etree和XPath配合使用
+
 # CSS 选择器 BeautifulSoup4
 - http://beautifulsoup.readthedocs.io/zh_CN/v4.4.0/
 ## 常用提取信息工具的比较：
@@ -79,4 +82,43 @@
     - beautifulsoup: 慢、使用简单、安装简单
     - lxml: 比较快、使用简单、安装一般
 ## 四大对象
-    -  
+- Tag
+- NavigableString
+- BeautifulSoup
+- Comment
+## Tag
+- 对应html中的标签
+- 通过soup.tag_name访问标签
+- tag的两个重要属性：
+    - name
+    - attrs
+## NavigableString
+- 对应内容值
+## BeautifulSoup
+- 表示一个文档的内容，大部分可以把它当做tag对象
+- 一般可以用soup表示
+## Comment
+- 特殊类型的NavigableString对象
+- 输出时候，内容不包括注释符号
+## 遍历文档对象
+- contents : tag的子节点以列表方式给出
+- children : 子节点以迭代器形式返回
+- descendants : 所有子孙节点
+- string
+## 搜索文档对象
+- find_all(name, attrs, recursive, text, **kwargs）
+    - name : 按照字符串搜索，类型可以为：
+        - 字符串
+        - 正则表达式（编译过）
+        - list
+    - keyword参数，可以表示属性
+    - text ： 对应tag的文本值
+## CSS选择器
+- 使用soup.select，返回一个列表
+- 通过标签名： soup.select('title')
+- 通过类名：soup.select('.content')
+- 通过id：soup.select('#name_id')
+- 组合查找：soup.select('div#input_content')
+- 属性查找：soup.select('img[class='photo'])
+- 获取tag内容：tag.get_text
+
