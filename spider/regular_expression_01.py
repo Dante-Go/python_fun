@@ -1,16 +1,8 @@
 import re
 
-s = r'([a-z]+) ([a-z]+)'
-pattern = re.compile(s, re.I)
-
-m = pattern.match('hello world wide web')
-
-s = m.group(0)
-print(s)
-a = m.span(0)
-print(a)
-s = m.group(1)
-print(s)
-a = m.span(1)
-s = m.groups()
-print(s)
+s = r'(\d+)'
+pattern = re.compile(s)
+m = pattern.search('one12two2three34')
+print(m.groups())
+m = pattern.search('one1123two34', 10, 50)
+print(m.group())
