@@ -13,7 +13,7 @@
 - 截屏
 - 安装：pip install selenium==2.48.0
 - 官网：http://selenium-python.readthedocs.io/index.html
-## PhantomJS(幽灵浏览器)
+## PhantomJS(幽灵浏览器) -- selenium对phantomJS的支持已经不更新，此方法可能失效
 - 基于Webkit的无界面浏览器
 - 官网：http://phantomjs.org/download.html
 ### selenium库的WebDriver可以与页面上的元素交互，模拟人工操作
